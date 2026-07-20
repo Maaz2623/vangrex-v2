@@ -1,0 +1,270 @@
+{
+  "project": {
+    "title": "Real Estate Lead Generation Landing Page",
+    "description": "A high-converting, single-page web platform designed to showcase premium property listings, capture qualified buyer and seller leads, and present agency credentials.",
+    "objective": "To capture high-intent real estate leads by providing seamless property search, detailed listings, and robust contact and viewing request workflows.",
+    "projectType": "Landing Page",
+    "targetAudience": [
+      "Prospective Home Buyers",
+      "Property Investors",
+      "Home Sellers"
+    ],
+    "successCriteria": [
+      "Demonstrate a page load speed under 2 seconds on mobile and desktop",
+      "Achieve lead conversion rate exceeding 5% of unique visitors",
+      "Ensure 100% responsive display across all standard mobile and desktop viewport sizes"
+    ]
+  },
+  "userRoles": [
+    {
+      "name": "Anonymous Visitor",
+      "description": "An unauthenticated user looking to buy, sell, or rent a property.",
+      "responsibilities": [
+        "Browse featured property listings",
+        "Search and filter listings by location, price, and type",
+        "Submit inquiry forms for specific properties or general consultation"
+      ],
+      "permissions": [
+        "View landing page content",
+        "Perform searches",
+        "Submit lead forms"
+      ]
+    },
+    {
+      "name": "Real Estate Agent / Administrator",
+      "description": "The administrative user who receives leads and manages the landing page content.",
+      "responsibilities": [
+        "Receive real-time lead notifications",
+        "Follow up with prospective clients captured by the landing page"
+      ],
+      "permissions": ["Access system-generated lead notifications"]
+    }
+  ],
+  "functionalRequirements": [
+    {
+      "id": "FR-01",
+      "title": "Hero Section & Lead Capture",
+      "description": "The platform must present an engaging hero section with an immediate search/filter input and a primary CTA leading to a contact form.",
+      "priority": "Critical",
+      "category": "Lead Generation",
+      "acceptanceCriteria": [
+        "The primary contact form is visible above the fold or accessible via a sticky navigation button.",
+        "Form submission triggers a secure POST request to the lead storage or dispatch system."
+      ]
+    },
+    {
+      "id": "FR-02",
+      "title": "Property Catalog and Filter",
+      "description": "The platform must display a grid of featured properties with dynamic filtering by price, type, location, and bedroom count.",
+      "priority": "High",
+      "category": "Search & Browse",
+      "acceptanceCriteria": [
+        "Filtering options apply instantly without requiring a full page reload.",
+        "Each listing shows key details: price, location, bedrooms, bathrooms, and square footage."
+      ]
+    },
+    {
+      "id": "FR-03",
+      "title": "Property Detail Modal",
+      "description": "The platform must allow visitors to click on any listing to view an expanded view with an image gallery, extended description, and a dedicated inquiry form.",
+      "priority": "High",
+      "category": "Property Information",
+      "acceptanceCriteria": [
+        "The modal displays a functional image slider or gallery.",
+        "The dedicated modal form automatically associates the inquiry with the specific property ID."
+      ]
+    },
+    {
+      "id": "FR-04",
+      "title": "Agent/Broker Profile Section",
+      "description": "The page must present profile cards for key agents with links to direct contact details (phone, email, WhatsApp).",
+      "priority": "Medium",
+      "category": "Trust & Authority",
+      "acceptanceCriteria": [
+        "Clicking agent phone/email buttons triggers device-native dialer or email client."
+      ]
+    }
+  ],
+  "nonFunctionalRequirements": {
+    "performance": [
+      "Page load speed must score above 90 on Google PageSpeed Insights.",
+      "All static assets and listing images must be lazily loaded and optimized."
+    ],
+    "scalability": [
+      "The landing page must handle traffic spikes up to 10,000 concurrent visitors without degradation."
+    ],
+    "security": [
+      "All form inputs must be sanitized to prevent SQL Injection and XSS attacks.",
+      "HTTPS must be enforced across all connections."
+    ],
+    "accessibility": [
+      "Ensure compliance with WCAG 2.1 Level AA standards, including color contrast and screen reader accessibility."
+    ],
+    "reliability": [
+      "The static front-end hosting must guarantee 99.9% uptime."
+    ],
+    "maintainability": [
+      "The application must use a clean component-based design allowing easy updates to listings."
+    ],
+    "responsiveness": [
+      "Layout must adapt smoothly to mobile, tablet, and desktop viewports."
+    ],
+    "seo": [
+      "Incorporate JSON-LD schema markup for local business and real estate listings.",
+      "Optimized meta tags must be dynamically set for social sharing and search engines."
+    ]
+  },
+  "features": {
+    "core": [
+      {
+        "name": "Dynamic Property Search Grid",
+        "description": "An interactive search and filter grid showcasing active properties with live state updates."
+      },
+      {
+        "name": "Multi-Purpose Lead Capture Form",
+        "description": "A validation-secured form enabling visitors to request property viewings or general consultations."
+      },
+      {
+        "name": "Agent Biography & Trust Badges",
+        "description": "A curated area highlighting customer testimonials, license info, and agent credentials."
+      }
+    ],
+    "optional": [
+      {
+        "name": "Interactive Neighborhood Map",
+        "description": "A map showing property locations and nearby amenities."
+      },
+      {
+        "name": "Automated WhatsApp Redirection",
+        "description": "A floating widget initiating instant chat with an active broker."
+      }
+    ],
+    "future": [
+      {
+        "name": "AI-Powered Home Valuation Estimator",
+        "description": "An interactive tool allowing home sellers to get instant, automatic property estimates."
+      },
+      {
+        "name": "Virtual 3D Tour Embeds",
+        "description": "Direct hosting or embedding of 3D walkthroughs from external providers inside property modals."
+      }
+    ]
+  },
+  "userStories": [
+    {
+      "id": "US-01",
+      "role": "Anonymous Visitor",
+      "story": "I want to filter properties by price and location",
+      "benefit": "so I can quickly find homes that fit my budget and preferred neighborhood without scrolling endlessly.",
+      "priority": "High"
+    },
+    {
+      "id": "US-02",
+      "role": "Anonymous Visitor",
+      "story": "I want to submit an inquiry directly through a property's details",
+      "benefit": "so that the agent knows exactly which home I am interested in when they contact me.",
+      "priority": "Critical"
+    },
+    {
+      "id": "US-03",
+      "role": "Real Estate Agent",
+      "story": "I want to receive lead submissions directly to my email or CRM",
+      "benefit": "so I can respond to hot prospects immediately and increase conversions.",
+      "priority": "High"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "Lead Form Submission Workflow",
+      "description": "The path a user takes when inquiring about a property or requesting a callback.",
+      "trigger": "User clicks the 'Submit Inquiry' button on any form.",
+      "steps": [
+        "Validate input parameters (email format, telephone, required name).",
+        "Display a visual loading state to prevent double submission.",
+        "Dispatch lead metadata to the notification service/database.",
+        "Render a confirmation/success state on screen to the visitor."
+      ],
+      "outcome": "The lead data is stored, the agent receives an email alert, and the user receives confirmation of their request."
+    }
+  ],
+  "businessRules": [
+    {
+      "title": "Lead Distribution",
+      "description": "All captured leads must trigger an email notification within 60 seconds to ensure prompt agent follow-up."
+    },
+    {
+      "title": "GDPR and Privacy Compliance",
+      "description": "Every form must include an explicit checkbox requiring consent to be contacted before submission is allowed."
+    }
+  ],
+  "validationRules": [
+    {
+      "field": "Email Address",
+      "rules": [
+        "Must conform to standard RFC 5322 email format.",
+        "Field is mandatory if a phone number is not provided."
+      ]
+    },
+    {
+      "field": "Phone Number",
+      "rules": [
+        "Must match standard global or local telephone formats.",
+        "Must contain only numbers, spaces, or leading '+'."
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Anonymous Visitor",
+      "allowedActions": ["viewListings", "filterProperties", "submitInquiry"]
+    },
+    {
+      "role": "Real Estate Agent / Administrator",
+      "allowedActions": ["receiveLeadNotifications", "updateListingDetails"]
+    }
+  ],
+  "integrations": [
+    {
+      "name": "Google Maps API",
+      "purpose": "Display exact or general property geographic locations.",
+      "required": false
+    },
+    {
+      "name": "SendGrid / SMTP",
+      "purpose": "Send automated real-time email notifications to agents upon lead form submissions.",
+      "required": true
+    }
+  ],
+  "constraints": {
+    "business": [
+      "Must adhere strictly to Fair Housing guidelines and local real estate advertising regulations."
+    ],
+    "technical": [
+      "The landing page must require no complex database setup for viewing listings; properties can be loaded from a static JSON data file to maximize speed."
+    ],
+    "operational": [
+      "Must be hosted on a CDN to guarantee low-latency loading globally."
+    ]
+  },
+  "risks": [
+    {
+      "title": "Large Image Payload",
+      "description": "High-quality property images can slow down mobile load times.",
+      "mitigation": "Enforce auto-optimization using Next-generation image formats (WebP/AVIF) and dynamic responsive sizing."
+    }
+  ],
+  "mvpScope": {
+    "included": [
+      "Static single-page design",
+      "Property search and filtering by price and location",
+      "Contact and viewing request form with validation",
+      "Agent profile cards",
+      "Email dispatch upon lead submission"
+    ],
+    "excluded": [
+      "Interactive broker dashboard",
+      "User authentication / portal accounts",
+      "Online payments or deposit booking workflows"
+    ]
+  }
+}

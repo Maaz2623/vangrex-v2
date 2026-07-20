@@ -3,6 +3,7 @@ import { Output, tool, ToolLoopAgent } from "ai";
 import z from "zod";
 import { gemini } from "../../model";
 import { RequirementsSchema } from "@/schemas/requirements.schema";
+import { REQUIREMENT_AGENT_INSTRUCTIONS } from "./general-instructions";
 
 const INSTRUCTIONS = `
 # Requirements Agent
@@ -226,35 +227,10 @@ const RequirementsInputSchema = z.object({
   research: ResearchSchema,
 });
 
-const requirementsAgent = new ToolLoopAgent({
+export const requirementsAgent = new ToolLoopAgent({
   model: gemini,
   output: Output.object({
     schema: RequirementsSchema,
   }),
-  instructions: INSTRUCTIONS,
-});
-
-export const requirementsTool = tool({
-  description:
-    "Generate a complete software requirements specification from the user's request and the Research Agent output. Define WHAT the software must do without making implementation or technology decisions.",
-
-  inputSchema: RequirementsInputSchema,
-
-  execute: async ({ userPrompt, research }) => {
-    console.log("Requirements Agent Started");
-
-    const result = await requirementsAgent.generate({
-      prompt: `
-USER_REQUEST:
-${userPrompt}
-
-RESEARCH_AGENT_OUTPUT:
-${JSON.stringify(research, null, 2)}
-`,
-    });
-
-    console.log(JSON.stringify(result.output, null, 2));
-
-    return result.output;
-  },
+  instructions: REQUIREMENT_AGENT_INSTRUCTIONS,
 });

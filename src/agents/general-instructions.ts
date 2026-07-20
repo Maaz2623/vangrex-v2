@@ -173,6 +173,13 @@ Examples:
 
 # Output Requirements
 
+- Generate the smallest valid JSON possible.
+- Do not include unnecessary metadata.
+- Do not include verbose descriptions.
+- Keep all text concise.
+- Prefer compact wording over detailed prose.
+- Optimize for AI consumption rather than human readability.
+
 Return ONLY the JSON matching the provided Zod schema.
 
 Do not include markdown.
@@ -192,6 +199,31 @@ Do not generate database schemas.
 Do not generate UI designs.
 
 Focus entirely on producing accurate, comprehensive domain research that will be consumed by downstream agents.
+
+---
+# JSON Optimization
+
+The output JSON will be consumed by downstream AI agents, not humans.
+
+Minimize the size of the JSON while preserving all essential information.
+
+Rules:
+
+- Include only information required by downstream agents.
+- Remove redundant or repetitive data.
+- Do not restate information already implied by another field.
+- Keep descriptions concise (prefer 1-2 sentences).
+- Prefer short arrays over long paragraphs.
+- Omit empty objects, empty arrays, null values, and default values.
+- Do not include examples unless explicitly required.
+- Do not include reasoning or explanations.
+- Avoid duplicate information across sections.
+- Use concise, industry-standard terminology.
+- Keep competitor summaries, risks, regulations, and integrations brief but informative.
+- If multiple items share identical characteristics, summarize them instead of repeating.
+- Optimize for minimal token usage without losing important domain knowledge.
+
+The resulting JSON should be as compact as possible while remaining complete and accurate.
 `;
 
 export const REQUIREMENT_AGENT_INSTRUCTIONS = `
@@ -248,6 +280,33 @@ Never:
 • Make engineering decisions.
 
 Those responsibilities belong to later agents.
+
+
+
+---
+# JSON Optimization
+
+The output JSON will be consumed by downstream AI agents, not humans.
+
+Minimize the size of the JSON while preserving all essential information.
+
+Rules:
+
+- Include only information required by downstream agents.
+- Remove redundant or repetitive data.
+- Do not restate information already implied by another field.
+- Keep descriptions concise (prefer 1-2 sentences).
+- Prefer short arrays over long paragraphs.
+- Omit empty objects, empty arrays, null values, and default values.
+- Do not include examples unless explicitly required.
+- Do not include reasoning or explanations.
+- Avoid duplicate information across sections.
+- Use concise, industry-standard terminology.
+- Keep competitor summaries, risks, regulations, and integrations brief but informative.
+- If multiple items share identical characteristics, summarize them instead of repeating.
+- Optimize for minimal token usage without losing important domain knowledge.
+
+The resulting JSON should be as compact as possible while remaining complete and accurate.
 
 ==================================================
 USING THE RESEARCH OUTPUT
@@ -1876,6 +1935,33 @@ Do not output SQL.
 Do not output pseudo code.
 
 Do not output anything outside the JSON.
+
+
+
+---
+# JSON Optimization
+
+The output JSON will be consumed by downstream AI agents, not humans.
+
+Minimize the size of the JSON while preserving all essential information.
+
+Rules:
+
+- Include only information required by downstream agents.
+- Remove redundant or repetitive data.
+- Do not restate information already implied by another field.
+- Keep descriptions concise (prefer 1-2 sentences).
+- Prefer short arrays over long paragraphs.
+- Omit empty objects, empty arrays, null values, and default values.
+- Do not include examples unless explicitly required.
+- Do not include reasoning or explanations.
+- Avoid duplicate information across sections.
+- Use concise, industry-standard terminology.
+- Keep competitor summaries, risks, regulations, and integrations brief but informative.
+- If multiple items share identical characteristics, summarize them instead of repeating.
+- Optimize for minimal token usage without losing important domain knowledge.
+
+The resulting JSON should be as compact as possible while remaining complete and accurate.
 
 `;
 
